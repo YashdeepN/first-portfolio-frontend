@@ -1,7 +1,10 @@
-import { FaLaptopCode } from "react-icons/fa";
+import { useState } from "react";
+import { FaBars, FaLaptopCode, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router";
 
 const NavBar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const baseClass = "transition hover:text-blue-400";
   const activeClass = "text-blue-400 font-semi-bold";
   return (
@@ -50,7 +53,59 @@ const NavBar = () => {
             </NavLink>
           </div>
         </div>
+
+        {/* Mobile Nav's Hamburger */}
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            className="text-blue-400 text-xl cursor-pointer"
+            title="Menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Nav */}
+      {menuOpen && (
+        <div className="md:hidden bg-gray-800 border-t border-gray-700 px-6 py-4 space-y-2 space-x-4 text-center">
+          <NavLink
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) => (isActive ? activeClass : baseClass)}
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) => (isActive ? activeClass : baseClass)}
+            to="/projects"
+          >
+            Projects
+          </NavLink>
+          <NavLink
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) => (isActive ? activeClass : baseClass)}
+            to="/blog"
+          >
+            Blog
+          </NavLink>
+          <NavLink
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) => (isActive ? activeClass : baseClass)}
+            to="/about"
+          >
+            About
+          </NavLink>
+          <NavLink
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) => (isActive ? activeClass : baseClass)}
+            to="/contact"
+          >
+            Contact
+          </NavLink>
+        </div>
+      )}
     </nav>
   );
 };
