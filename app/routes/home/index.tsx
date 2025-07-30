@@ -9,12 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return (
-    <section>
-      <Hero
-        name="Manthan Joshi"
-        text="I build friendly web experiences and help others become confident."
-      />
-    </section>
-  );
+  return <>Home Page</>;
 }
