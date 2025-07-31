@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router";
 
-const Hero = ({
+interface HeroProps {
+  name?: string;
+  text?: string;
+}
+
+const Hero: React.FC<HeroProps> = ({
   name = "[NAME]",
   text = "I build friendly web experiences and help others become confident.",
 }) => {
