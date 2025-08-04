@@ -9,10 +9,29 @@ import { AnimatePresence, motion } from "framer-motion";
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Project[] }> {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/projects`);
-  const data = await res.json();
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/projects?populate=*`
+  );
+  const jsonData = await res.json();
 
-  return { projects: data };
+  const projects = jsonData.data.map((item: Project) => ({
+    id: item.id,
+    documentId: item.documentId,
+    title: item.title,
+    description: item.description,
+    image: item.image?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
+      : "/images/no-image.png",
+
+    url: item.url,
+    date: item.date,
+    category: item.category,
+    featured: item.featured,
+  }));
+
+  console.log("Projects:", projects);
+
+  return { projects };
 }
 
 const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
