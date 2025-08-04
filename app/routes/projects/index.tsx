@@ -1,4 +1,4 @@
-import type { Project } from "~/types";
+import type { Project, StrapiProject, StrapiResponse } from "~/types";
 import type { Route } from "./+types/index";
 import ProjectCard from "~/components/ProjectCard";
 import { useState } from "react";
@@ -12,9 +12,9 @@ export async function loader({
   const res = await fetch(
     `${import.meta.env.VITE_API_URL}/projects?populate=*`
   );
-  const jsonData = await res.json();
+  const jsonData: StrapiResponse<StrapiProject> = await res.json();
 
-  const projects = jsonData.data.map((item: Project) => ({
+  const projects = jsonData.data.map((item) => ({
     id: item.id,
     documentId: item.documentId,
     title: item.title,
@@ -29,8 +29,6 @@ export async function loader({
     featured: item.featured,
   }));
 
-  console.log("Projects:", projects);
-
   return { projects };
 }
 
@@ -40,6 +38,8 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
 
   const projectsPerPage = 10;
   const { projects } = loaderData as { projects: Project[] };
+
+  console.log("Projects:", projects);
 
   // Get unique categories:
   const categories = [
