@@ -39,8 +39,6 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   const projectsPerPage = 10;
   const { projects } = loaderData as { projects: Project[] };
 
-  console.log("Projects:", projects);
-
   // Get unique categories:
   const categories = [
     "All",
