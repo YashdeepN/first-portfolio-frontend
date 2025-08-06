@@ -2,7 +2,7 @@ import Hero from "~/components/Hero";
 import type { Route } from "./+types/index";
 import FeaturedProjects from "~/components/FeaturedProjects";
 import type {
-  PostMeta,
+  Post,
   Project,
   StrapiPost,
   StrapiProject,
@@ -20,7 +20,7 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader({
   request,
-}: Route.LoaderArgs): Promise<{ projects: Project[]; posts: PostMeta[] }> {
+}: Route.LoaderArgs): Promise<{ projects: Project[]; posts: Post[] }> {
   const url = new URL(request.url);
 
   const [projectRes, postRes] = await Promise.all([
@@ -44,9 +44,7 @@ export async function loader({
     documentId: item.documentId,
     title: item.title,
     description: item.description,
-    image: item.image?.url
-      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
-      : "/images/no-image.png",
+    image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
 
     url: item.url,
     date: item.date,
@@ -60,9 +58,7 @@ export async function loader({
     slug: item.slug,
     excerpt: item.excerpt,
     body: item.body,
-    image: item.image?.url
-      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
-      : "/images/no-image.png",
+    image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
     date: item.date,
   }));
 

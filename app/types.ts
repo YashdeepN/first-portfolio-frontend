@@ -1,20 +1,69 @@
-import type { Url } from "url";
+// import type { Url } from "url";
 
-export type imageType = {
-  id: string;
-  name: string;
-  documentId: string;
-  url: string;
-  formats?: {
-    thumbnail?: { url: string };
-    small?: { url: string };
-    medium?: { url: string };
-    large?: { url: string };
-  };
-};
+// export type imageType = {
+//   id: string;
+//   name: string;
+//   documentId: string;
+//   url: string;
+//   formats?: {
+//     thumbnail?: { url: string };
+//     small?: { url: string };
+//     medium?: { url: string };
+//     large?: { url: string };
+//   };
+// };
+
+// export type Project = {
+//   id: string;
+//   title: string;
+//   description: string;
+//   image: string;
+//   url: string;
+//   date: string;
+//   category: string;
+//   featured: boolean;
+//   documentId: string;
+// };
+
+// export type PostMeta = {
+//   id: string;
+//   slug: string;
+//   title: string;
+//   excerpt: string;
+//   date: string;
+//   image: string;
+// };
+
+// export type StrapiResponse<T> = {
+//   data: T[];
+// };
+
+// export type StrapiProject = {
+//   id: string;
+//   title: string;
+//   description: string;
+//   image?: imageType;
+//   url: string;
+//   date: string;
+//   category: string;
+//   featured: boolean;
+//   documentId: string;
+// };
+
+// export type StrapiPost = {
+//   id: string;
+//   documentId: string;
+//   title: string;
+//   slug: string;
+//   excerpt: string;
+//   date: string;
+//   body: string;
+//   image?: imageType;
+// };
 
 export type Project = {
   id: string;
+  documentId: string;
   title: string;
   description: string;
   image: string;
@@ -22,13 +71,13 @@ export type Project = {
   date: string;
   category: string;
   featured: boolean;
-  documentId: string;
 };
 
-export type PostMeta = {
+export type Post = {
   id: string;
   slug: string;
   title: string;
+  body: string;
   excerpt: string;
   date: string;
   image: string;
@@ -40,14 +89,22 @@ export type StrapiResponse<T> = {
 
 export type StrapiProject = {
   id: string;
+  documentId: string;
   title: string;
   description: string;
-  image?: imageType;
+  image?: {
+    url: string;
+    formats?: {
+      thumbnail?: { url: string };
+      small?: { url: string };
+      medium?: { url: string };
+      large?: { url: string };
+    };
+  };
   url: string;
   date: string;
   category: string;
   featured: boolean;
-  documentId: string;
 };
 
 export type StrapiPost = {
@@ -58,5 +115,13 @@ export type StrapiPost = {
   excerpt: string;
   date: string;
   body: string;
-  image?: imageType;
+  image?: {
+    url: string;
+    formats?: {
+      thumbnail?: { url: string };
+      small?: { url: string };
+      medium?: { url: string };
+      large?: { url: string };
+    };
+  };
 };

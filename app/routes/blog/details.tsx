@@ -1,10 +1,8 @@
-import React from "react";
-import ReactMarkdown from "react-markdown";
-import type { Route } from "./+types/details";
-import type { PostMeta, StrapiPost, StrapiResponse } from "~/types";
-import { Link } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
-import { image } from "framer-motion/client";
+import ReactMarkdown from "react-markdown";
+import { Link } from "react-router";
+import type { StrapiPost, StrapiResponse } from "~/types";
+import type { Route } from "./+types/details";
 
 export async function loader({ request, params }: Route.LoaderArgs) {
   const { slug } = params;
@@ -38,9 +36,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     title: item.title,
     date: item.date,
     body: item.body,
-    image: item.image?.url
-      ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}`
-      : "/images/no-image.png",
+    image: item.image?.url ? `${item.image.url}` : "/images/no-image.png",
   };
   return { post };
 }
