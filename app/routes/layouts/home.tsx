@@ -5,8 +5,9 @@ const HomeLayout = () => {
   return (
     <>
       <Hero
-        name="Manthan Joshi"
-        text="I build friendly web experiences and help others become confident."
+        name="Yashdeep Neema"
+        // text="I build friendly web experiences and help others become confident."
+        text="A Frontend Developer focused on crafting clean, interactive UIs with React."
       />
       <section className="max-w-6xl mx-auto px-6 my-8">
         <Outlet />
