@@ -27,21 +27,8 @@ const AboutPage = () => {
         {/* Bio Section */}
 
         <div className="mb-12">
-          <h2 className="text-2xl font-semibold text-white mb-4">My Mission</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">About me</h2>
           <p className="text-gray-300 leading-relexed">
-            <p>
-              I'm a self-taught full-stack developer specializing in the MERN
-              stack (MongoDB, Express, React, Node.js), and Django framework,
-              with a strong focus on creating React-driven user interfaces that
-              are both intuitive and performant.
-            </p>
-            <p>
-              My core strength lies in React and modern frontend development,
-              but I’m equally comfortable working across the full stack — from
-              building REST APIs with Node.js/Express to managing MongoDB
-              databases.
-            </p>
-
             <p className="grid gap-2.5">
               <p>
                 Hi, I'm Yashdeep —a Mechanical Engineering college lecturer
