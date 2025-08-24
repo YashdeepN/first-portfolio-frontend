@@ -8,7 +8,7 @@ const AboutPage = () => {
 
         <div className="flex flex-col md:flex-row md:items-start items-center gap-10 mb-12">
           <img
-            src="/images/profile01.jpg"
+            src="/images/profile01.jpeg"
             alt="profile"
             className="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-md"
           />
